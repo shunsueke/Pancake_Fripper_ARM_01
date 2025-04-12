@@ -21,8 +21,8 @@
 #define ARM2_MIN 125
 #define ARM2_MAX 190
 
-#define HAND_MIN 60
-#define HAND_MAX 150
+#define HAND_MIN 0
+#define HAND_MAX 90
 
 // Servo objects
 Servo base_servo;
