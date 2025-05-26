@@ -47,10 +47,24 @@ const int deadzone = 15;
 void notify() {
   // BASE SERVO - leftX joystick
   int lx = Ps3.data.analog.stick.lx;
-  if (abs(lx) > deadzone) {
+  /*if (abs(lx) > deadzone) {
     basePos += map(lx, -128, 127, -3, 3);  // 調整速度
     basePos = constrain(basePos, BASE_MIN, BASE_MAX);
     base_servo.write(basePos);
+  }*/
+  if (abs(lx) > deadzone) {
+    int base_symbol = analogRead(lx);
+    if(base_symbol > 0){
+      for(int i = 0; i < Base_Max; i ++){
+       base_servo.write(i);
+      }
+    }
+    else if(base_symbol < 0){
+      for(int i = 0; i > Base_Min; i --){
+       base_servo.write(i);
+      }
+    }
+    
   }
 
   // ARM1 SERVO - rightX joystick
